@@ -1,5 +1,7 @@
 import Head from 'next/head'
+
 import Header from '../components/Header';
+import Post from '../components/Post';
 
 export default function Home() {
 	return (
@@ -12,7 +14,10 @@ export default function Home() {
 			<Header />
 
 			<main>
-
+				<div className='max-w-7xl mx-auto my-4 space-y-4'>
+					<Post />
+					<Post />
+				</div>
 			</main>
 		</>
 	)
