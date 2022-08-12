@@ -3,7 +3,7 @@ export default function Header() {
         <header className="bg-white border-b">
             <nav className="navbar max-w-7xl mx-auto">
                 <div className="flex-1">
-                    <a className="btn btn-ghost normal-case text-xl">NextJS Blog</a>
+                    <a className="btn btn-ghost normal-case text-xl bg-gray-900 text-white">NextJS Blog</a>
                 </div>
                 <div className="flex-none gap-2">
                     <button className="btn btn-outline hidden md:inline">Create Post</button>
