@@ -14,7 +14,7 @@ export default function Home() {
 			<Header />
 
 			<main>
-				<div className='max-w-7xl mx-auto my-4 space-y-4'>
+				<div className='my-4 space-y-4'>
 					<Post />
 					<Post />
 				</div>
