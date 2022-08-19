@@ -1,12 +1,19 @@
+import Link from 'next/link';
+
+
 export default function Header() {
     return (
         <header className="bg-white border-b">
             <nav className="navbar max-w-7xl mx-auto">
                 <div className="flex-1">
-                    <a className="btn btn-ghost normal-case text-xl bg-gray-900 hover:bg-gray-700 text-white">NextJS Blog</a>
+                    <Link href='/'>
+                        <a className="btn btn-ghost normal-case text-xl">NextJS Blog</a>
+                    </Link>
                 </div>
                 <div className="flex-none gap-2">
-                    <button className="btn btn-outline hidden md:inline hover:bg-gray-900">Create Post</button>
+                    <Link href='/post/create'>
+                        <a className='btn btn-outline hidden md:flex  hover:bg-gray-900'>Create Post</a>
+                    </Link>
                     <div className="dropdown dropdown-end">
                         <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
                             <div className="w-10 rounded-full">
