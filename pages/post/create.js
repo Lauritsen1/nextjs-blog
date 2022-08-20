@@ -46,19 +46,22 @@ export default function create() {
                     </Link>
                 </div>
 
-                <form onSubmit={handleSubmit} className='border md:rounded-lg h-full max-h-full flex flex-col overflow-y-scroll'>
-                    <div className='bg-white p-2 md:py-4 md:px-8'>
-                        <TextareaAutosize className='text-4xl font-bold w-full max-w-full outline-0 resize-none' placeholder='Post title...' value={title} onChange={(e) => setTitle(e.target.value)} />
+
+                <form onSubmit={handleSubmit} className='h-full'>
+                    <div className='border md:rounded-lg h-full max-h-full flex flex-col overflow-y-scroll'>
+                        <div className='bg-white p-2 md:py-4 md:px-8'>
+                            <TextareaAutosize className='text-4xl font-bold w-full max-w-full outline-0 resize-none' placeholder='Post title...' value={title} onChange={(e) => setTitle(e.target.value)} />
+                        </div>
+
+                        <TextEditor content={content} setContent={setContent} />
                     </div>
 
-                    <TextEditor content={content} setContent={setContent} />
+                    <div className='p-2 md:py-4 md:px-0'>
+                        <button className="btn mr-4">Publish</button>
+                        {/* <button className="btn btn-ghost">Save Draft</button> */}
+                    </div>
                 </form>
-            </div>
 
-
-            <div className='p-2 md:py-4 md:px-0'>
-                <button className="btn mr-4">Publish</button>
-                <button className="btn btn-ghost">Save Draft</button>
             </div>
 
         </div>
