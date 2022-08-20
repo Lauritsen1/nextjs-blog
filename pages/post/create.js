@@ -1,6 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { toast } from 'react-toastify';
 
 import TextEditor from '../../components/TextEditor';
 import TextareaAutosize from 'react-textarea-autosize';
@@ -10,11 +9,15 @@ export default function create() {
     const [title, setTitle] = useState('');
     const [content, setContent] = useState('');
     const [author, setAuthor] = useState('Mike Oxlong');
+    const [error, setError] = useState('');
+
+    const scrollView = useRef();
 
     useEffect(() => {
-        console.log(title);
-        console.log(content);
-    }, [title, content])
+        if (error) {
+            scrollView.current.scrollTo(0, 0);
+        }
+    }, [error])
 
 
     const handleSubmit = async (e) => {
@@ -23,18 +26,12 @@ export default function create() {
         const body = { title, content, author }
 
         if (!title) {
-            toast.error('Title cant be blank', {
-                position: "top-center",
-                theme: "colored"
-            });
+            setError("Title: Can't be blank");
             return
         }
 
         if (!content) {
-            toast.error('Content cant be blank', {
-                position: "top-center",
-                theme: "colored"
-            });
+            setError("Content: Can't be blank");
             return
         }
 
@@ -63,7 +60,18 @@ export default function create() {
                 </Link>
             </div>
 
-            <div className='border md:rounded-lg flex flex-col h-full overflow-y-scroll'>
+            <div className='border md:rounded-lg flex flex-col h-full overflow-y-scroll scroll-smooth' ref={scrollView}>
+
+                {error &&
+                    <div className="bg-red-300 text-red-900 p-2 md:py-4 md:px-8 flex flex-col items-start gap-2 md:gap-4">
+                        <div className='flex items-center'>
+                            <span className='text-lg font-bold'>Something went wrong:</span>
+                        </div>
+                        <ul className='list-disc list-inside flex flex-col items-start'>
+                            <li>{error}</li>
+                        </ul>
+                    </div>
+                }
 
                 <div className='bg-white p-2 md:py-4 md:px-8'>
                     <TextareaAutosize className='text-4xl font-bold w-full max-w-full outline-0 resize-none' placeholder='Post title...' value={title} onChange={(e) => setTitle(e.target.value)} />
