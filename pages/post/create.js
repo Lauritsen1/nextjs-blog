@@ -1,9 +1,38 @@
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 import TextEditor from '../../components/TextEditor';
 import TextareaAutosize from 'react-textarea-autosize';
 
 export default function create() {
+
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [author, setAuthor] = useState('Mike Oxlong');
+
+    useEffect(() => {
+        console.log(title);
+        console.log(content);
+    }, [title, content])
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const body = { title, content, author }
+
+        try {
+            await fetch('/api/posts', {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(body)
+            });
+
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
     return (
         <div className='max-w-3xl mx-auto flex flex-col'>
 
@@ -17,18 +46,18 @@ export default function create() {
                     </Link>
                 </div>
 
-                <div className='border md:rounded-lg h-full max-h-full flex flex-col overflow-y-scroll'>
+                <form onSubmit={handleSubmit} className='border md:rounded-lg h-full max-h-full flex flex-col overflow-y-scroll'>
                     <div className='bg-white p-2 md:py-4 md:px-8'>
-                        <TextareaAutosize className='text-4xl font-bold w-full max-w-full outline-0 resize-none' placeholder='Post title...' />
+                        <TextareaAutosize className='text-4xl font-bold w-full max-w-full outline-0 resize-none' placeholder='Post title...' value={title} onChange={(e) => setTitle(e.target.value)} />
                     </div>
 
-                    <TextEditor />
-                </div>
+                    <TextEditor content={content} setContent={setContent} />
+                </form>
             </div>
 
 
             <div className='p-2 md:py-4 md:px-0'>
-                <button className="btn">Publish</button>
+                <button className="btn mr-4">Publish</button>
                 <button className="btn btn-ghost">Save Draft</button>
             </div>
 

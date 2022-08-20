@@ -1,17 +1,9 @@
-import { useState, useEffect } from 'react';
 import dynamic from "next/dynamic";
 const ReactQuill = dynamic(import('react-quill'), { ssr: false })
 
 import 'react-quill/dist/quill.snow.css';
 
-export default function TextEditor() {
-
-    const [value, setValue] = useState('');
-
-    useEffect(() => {
-        console.log(value);
-    }, [value])
-
+export default function TextEditor({ content, setContent }) {
 
     const toolbarOptions = [
         [{ 'header': 1 }, { 'header': 2 }],
@@ -27,6 +19,6 @@ export default function TextEditor() {
         toolbar: toolbarOptions
     }
 
-    return <ReactQuill modules={modules} theme="snow" value={value} onChange={setValue} />
+    return <ReactQuill modules={modules} theme="snow" value={content} onChange={setContent} />
 
 }
