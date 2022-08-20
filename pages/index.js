@@ -1,9 +1,12 @@
+import { PrismaClient } from '@prisma/client';
+const prisma = new PrismaClient();
+
 import Head from 'next/head'
 
 import Header from '../components/Header';
 import Post from '../components/Post';
 
-export default function Home() {
+export default function Home({ posts }) {
 	return (
 		<>
 			<Head>
@@ -15,10 +18,22 @@ export default function Home() {
 
 			<main>
 				<div className='py-4 min-h-screen space-y-4'>
-					<Post />
-					<Post />
+
+					{posts && posts.map(post => (
+						<Post key={post.id} post={post} />
+					))}
+
 				</div>
 			</main>
 		</>
 	)
+}
+
+export async function getStaticProps() {
+
+	const posts = await prisma.post.findMany()
+
+	return {
+		props: { posts }
+	}
 }
