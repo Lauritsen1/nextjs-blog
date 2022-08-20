@@ -14,7 +14,7 @@ export default function Home() {
 			<Header />
 
 			<main>
-				<div className='my-4 space-y-4'>
+				<div className='py-4 min-h-screen space-y-4'>
 					<Post />
 					<Post />
 				</div>
