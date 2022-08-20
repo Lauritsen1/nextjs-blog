@@ -11,7 +11,7 @@ export default function Header() {
                     </Link>
                 </div>
                 <div className="flex-none gap-2">
-                    <Link href='/post/create'>
+                    <Link href='/new'>
                         <a className='btn btn-outline hidden md:flex  hover:bg-gray-900'>Create Post</a>
                     </Link>
                     <div className="dropdown dropdown-end">

@@ -1,14 +1,14 @@
 export default function Post(props) {
     return (
-        <article className="max-w-2xl px-8 p-4 mx-auto bg-white md:rounded-lg shadow-md">
+        <article className="max-w-xl px-8 p-4 mx-auto bg-white md:rounded-lg shadow-md">
             <div className="flex items-center justify-between">
 
                 <a className="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-900 rounded cursor-pointer hover:bg-gray-700">Tag</a>
             </div>
 
-            <div className="mt-2">
-                <a href="#" className="text-2xl font-bold text-gray-900 hover:text-gray-700 hover:underline">{props.post.title}</a>
-                <p className="mt-2 text-gray-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!</p>
+            <div className="mt-4">
+                <a href="#" className="text-3xl font-bold text-gray-900 hover:text-gray-700 hover:underline">{props.post.title}</a>
+                {/* <p className="mt-2 text-gray-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!</p> */}
             </div>
 
             <div className="flex items-center justify-between mt-4">

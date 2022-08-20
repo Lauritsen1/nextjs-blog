@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 
-import TextEditor from '../../components/TextEditor';
+import TextEditor from '../components/TextEditor';
 import TextareaAutosize from 'react-textarea-autosize';
 
 export default function create() {
@@ -36,7 +36,7 @@ export default function create() {
         }
 
         try {
-            await fetch('/api/posts', {
+            await fetch('/api/posts/create', {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(body)
