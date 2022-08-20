@@ -36,15 +36,3 @@ a {
 	border: none !important;
 	background-color: white;
 }
-
-.scroll-view {
-	height: calc(100% - 64px);
-	max-height: calc(100% - 64px);
-}
-
-@media screen and (min-width: 768px) {
-	.scroll-view {
-		height: calc(100% - 80px);
-		max-height: calc(100% - 80px);
-	}
-}
