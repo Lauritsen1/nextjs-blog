@@ -37,8 +37,13 @@ a {
 	background-color: white;
 }
 
+.ql-editor {
+	font-size: 18px;
+}
+
 @media screen and (min-width: 768px) {
 	.ql-editor {
-		padding: 1rem 2rem !important;
+		padding: 2rem 4rem !important;
+		font-size: 20px;
 	}
 }

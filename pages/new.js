@@ -48,10 +48,9 @@ export default function create() {
     }
 
     return (
-        <form onSubmit={handleSubmit} className='max-w-3xl mx-auto flex flex-col h-screen'>
+        <form onSubmit={handleSubmit} className='max-w-4xl mx-auto flex flex-col h-screen'>
 
-            <div className='flex justify-between items p-2 md:py-4 md:px-0'>
-                <h2 className='text-2xl font-bold text-gray-900'>Draft</h2>
+            <div className='flex justify-end items p-2 md:py-4 md:px-0'>
 
                 <Link href="/">
                     <a className='btn btn-sm btn-square btn-outline border-none'>
@@ -73,8 +72,8 @@ export default function create() {
                     </div>
                 }
 
-                <div className='bg-white p-2 md:py-4 md:px-8'>
-                    <TextareaAutosize className='text-4xl font-bold w-full max-w-full outline-0 resize-none' placeholder='Post title...' value={title} onChange={(e) => setTitle(e.target.value)} />
+                <div className='bg-white p-2 md:py-8 md:px-16'>
+                    <TextareaAutosize className='text-3xl md:text-5xl font-bold w-full max-w-full outline-0 resize-none' placeholder='Post title...' value={title} onChange={(e) => setTitle(e.target.value)} />
                 </div>
 
                 <TextEditor content={content} setContent={setContent} />
