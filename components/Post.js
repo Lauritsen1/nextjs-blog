@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function Post(props) {
     return (
         <article className="max-w-xl px-8 p-4 mx-auto bg-white md:rounded-lg shadow-md">
@@ -7,7 +9,10 @@ export default function Post(props) {
             </div>
 
             <div className="mt-4">
-                <a href="#" className="text-3xl font-bold text-gray-900 hover:text-gray-700 hover:underline">{props.post.title}</a>
+                <Link href={`/post/${props.post.id}`}>
+                    <a className="text-3xl font-bold text-gray-900 hover:text-gray-700 hover:underline">{props.post.title}</a>
+                </Link>
+
                 {/* <p className="mt-2 text-gray-600">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tempora expedita dicta totam aspernatur doloremque. Excepturi iste iusto eos enim reprehenderit nisi, accusamus delectus nihil quis facere in modi ratione libero!</p> */}
             </div>
 

@@ -1,6 +1,5 @@
 import Head from 'next/head';
-import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
+import prisma from '../../lib/prisma';
 
 import Header from '../../components/Header';
 
@@ -36,7 +35,6 @@ export default function post({ post }) {
                 </div>
             </div>
         </>
-
     )
 }
 
