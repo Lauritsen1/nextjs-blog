@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Post(props) {
     return (
-        <article className="max-w-xl px-8 p-4 mx-auto bg-white md:rounded-lg shadow-md">
+        <article className="max-w-xl px-8 p-4 mx-auto bg-white md:rounded-lg border">
             <div className="flex items-center justify-between">
 
                 <a className="px-3 py-1 text-sm font-bold text-gray-100 transition-colors duration-200 transform bg-gray-900 rounded cursor-pointer hover:bg-gray-700">Tag</a>
