@@ -3,9 +3,9 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-import { ThemeProvider } from '@/components/theme-provider'
+import { ThemeProvider } from '@/components/ThemeProvider'
 
-import Header from '@/components/header'
+import Header from '@/components/Header'
 
 export const metadata = {
   title: 'Create Next App',

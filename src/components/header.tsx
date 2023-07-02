@@ -1,10 +1,10 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ThemeToggle } from '@/components/theme-toggle'
+import { ThemeToggle } from '@/components/ThemeToggle'
 
 import { Edit3, GithubIcon } from 'lucide-react'
 
-import { AvatarDropdown } from '@/components/avatar-dropdown'
+import { AvatarDropdown } from '@/components/AvatarDropdown'
 
 export default function Header() {
   return (
