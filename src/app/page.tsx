@@ -1,3 +1,9 @@
+import BlogPostCard from '@/components/BlogPostCard'
+
 export default function Home() {
-  return <main></main>
+  return (
+    <main className='container py-4'>
+      <BlogPostCard />
+    </main>
+  )
 }
