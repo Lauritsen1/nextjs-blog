@@ -18,6 +18,7 @@ export default function Header() {
         </Link>
 
         <div className='flex space-x-4'>
+          <ThemeToggle />
           <Button variant='outline'>Create Post</Button>
           <AvatarDropdown />
         </div>
