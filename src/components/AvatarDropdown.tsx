@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import { User, Settings, LogOut } from 'lucide-react'
+import { User, LayoutDashboard, Settings, LogOut } from 'lucide-react'
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import {
@@ -25,6 +25,12 @@ export function AvatarDropdown() {
           <Link href='#' className='flex w-full items-center'>
             <User className='mr-2 h-4 w-4' />
             <span>Profile</span>
+          </Link>
+        </DropdownMenuItem>
+        <DropdownMenuItem>
+          <Link href='/dashboard' className='flex w-full items-center'>
+            <LayoutDashboard className='mr-2 h-4 w-4' />
+            <span>Dashboard</span>
           </Link>
         </DropdownMenuItem>
         <DropdownMenuItem>
