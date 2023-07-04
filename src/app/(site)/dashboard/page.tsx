@@ -1,4 +1,4 @@
-import { H1, H3, H2 } from '@/components/Typography'
+import { H1 } from '@/components/Typography'
 import DashboardPostCard from '@/components/DashboardPostCard'
 
 export default async function Dashboard() {

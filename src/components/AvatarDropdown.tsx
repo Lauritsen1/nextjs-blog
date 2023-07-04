@@ -1,4 +1,8 @@
+'use client'
+
 import Link from 'next/link'
+
+import { useClerk } from '@clerk/clerk-react'
 
 import { User, LayoutDashboard, Settings, LogOut } from 'lucide-react'
 
@@ -12,6 +16,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 export function AvatarDropdown() {
+  const { signOut } = useClerk()
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -40,11 +45,12 @@ export function AvatarDropdown() {
           </Link>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
-        <DropdownMenuItem>
-          <Link href='#' className='flex w-full items-center'>
-            <LogOut className='mr-2 h-4 w-4' />
-            <span>Logout</span>
-          </Link>
+        <DropdownMenuItem
+          className='flex w-full cursor-pointer items-center'
+          onClick={() => signOut()}
+        >
+          <LogOut className='mr-2 h-4 w-4' />
+          <span>Logout</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
