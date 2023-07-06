@@ -13,7 +13,7 @@ import { Dot } from 'lucide-react'
 
 export default function BlogPostCard() {
   return (
-    <Card className='mx-auto max-w-lg'>
+    <Card className='border-none'>
       <CardHeader>
         <CardTitle>Lorem ipsum</CardTitle>
         <CardDescription>
