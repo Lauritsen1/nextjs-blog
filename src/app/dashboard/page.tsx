@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 
-import DashboardPostCard from '@/components/DashboardPostCard'
+import DashboardPostItem from '@/components/dashboard-post-item'
 
 import { Plus } from 'lucide-react'
 
@@ -20,8 +20,8 @@ export default async function Dashboard() {
         </Button>
       </div>
       <div className='divide-y divide-border rounded-md border'>
-        <DashboardPostCard />
-        <DashboardPostCard />
+        <DashboardPostItem />
+        <DashboardPostItem />
       </div>
     </div>
   )

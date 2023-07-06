@@ -15,7 +15,7 @@ import {
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu'
 
-export function AvatarDropdown() {
+export default function UserAvatar() {
   const { signOut } = useClerk()
   return (
     <DropdownMenu>

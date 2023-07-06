@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/button'
 
 import { Dot } from 'lucide-react'
 
-export default function BlogPostCard() {
+export default function PostItem() {
   return (
     <Card className='border-none'>
       <CardHeader>

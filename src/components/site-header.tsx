@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { ThemeToggle } from '@/components/ThemeToggle'
+import { ThemeToggle } from '@/components/theme-toggle'
 
-import { Edit3, GithubIcon } from 'lucide-react'
+import { Edit3 } from 'lucide-react'
 
-import { AvatarDropdown } from '@/components/AvatarDropdown'
+import UserAvatar from '@/components/user-avatar'
 
-export default function Header() {
+export default function SiteHeader() {
   return (
     <header className='sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur'>
       <div className='container flex h-14 items-center justify-between'>
@@ -19,8 +19,10 @@ export default function Header() {
 
         <div className='flex space-x-4'>
           <ThemeToggle />
-          <Button variant='outline'>Create Post</Button>
-          <AvatarDropdown />
+          <Link className='h-full w-full' href='/new'>
+            <Button variant='outline'>Create Post</Button>
+          </Link>
+          <UserAvatar />
         </div>
       </div>
     </header>

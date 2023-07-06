@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 import { ThemeProvider } from '@/components/ThemeProvider'
 
-import Header from '@/components/Header'
+import SiteHeader from '@/components/site-header'
 
 export const metadata = {
   title: 'Create Next App',
@@ -23,7 +23,7 @@ export default function RootLayout({
       <html lang='en' suppressHydrationWarning>
         <body className={inter.className}>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-            <Header />
+            <SiteHeader />
             {children}
           </ThemeProvider>
         </body>

@@ -1,16 +1,16 @@
 import { Separator } from '@/components/ui/separator'
 
-import BlogPostCard from '@/components/BlogPostCard'
+import PostItem from '@/components/post-item'
 
 export default async function Home() {
   return (
     <main className='container py-4'>
       <div className='mx-auto max-w-2xl divide-y divide-border rounded-md'>
-        <BlogPostCard />
+        <PostItem />
         <Separator />
-        <BlogPostCard />
+        <PostItem />
         <Separator />
-        <BlogPostCard />
+        <PostItem />
       </div>
     </main>
   )

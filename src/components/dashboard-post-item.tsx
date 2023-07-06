@@ -25,7 +25,7 @@ import {
 
 import { MoreVertical } from 'lucide-react'
 
-export default function DashboardPostCard() {
+export default function DashboardPostItem() {
   const [showDeleteAlert, setShowDeleteAlert] = useState<boolean>(false)
   return (
     <div className='flex items-center justify-between p-4 shadow-sm'>
