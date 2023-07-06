@@ -4,7 +4,7 @@ import DashboardPostItem from '@/components/dashboard-post-item'
 
 import { Plus } from 'lucide-react'
 
-export default async function Dashboard() {
+export default function Dashboard() {
   return (
     <div className='grid gap-8'>
       <div className='flex items-center justify-between px-2'>
