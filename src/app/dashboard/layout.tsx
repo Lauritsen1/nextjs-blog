@@ -32,7 +32,7 @@ export default function DashboardLayout({
       <aside className='hidden flex-col md:flex'>
         <nav className='grid gap-2'>
           {links.map((link) => (
-            <Link href={link.title}>
+            <Link key={link.title} href={link.href}>
               <span
                 className={cn(
                   'group flex items-center rounded-md px-3 py-2 text-sm font-medium hover:bg-accent hover:text-accent-foreground',
