@@ -1,9 +1,17 @@
+'use client'
+
+import { useState } from 'react'
+
+import Link from 'next/link'
+
+import { Button } from '@/components/ui/button'
 import {
-  Card,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from '@/components/ui/card'
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSeparator,
+} from '@/components/ui/dropdown-menu'
 import {
   AlertDialog,
   AlertDialogAction,
@@ -13,54 +21,58 @@ import {
   AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
-  AlertDialogTrigger,
 } from '@/components/ui/alert-dialog'
 
-import { Button } from '@/components/ui/button'
-
-import { Edit, Trash2 } from 'lucide-react'
+import { MoreVertical } from 'lucide-react'
 
 export default function DashboardPostCard() {
+  const [showDeleteAlert, setShowDeleteAlert] = useState<boolean>(false)
   return (
-    <Card className='flex items-center justify-between'>
-      <CardHeader className='w-full'>
-        <div className='flex items-center justify-between'>
-          <div>
-            <CardTitle className='text-lg'>Lorem ipsum</CardTitle>
-            <CardDescription>
-              <span>Published: Jul 3</span>
-            </CardDescription>
-          </div>
-          <div className='space-x-2'>
-            <Button variant='ghost' size='icon'>
-              <Edit className='h-4 w-4' />
-            </Button>
+    <div className='flex items-center justify-between p-4 shadow-sm'>
+      <div>
+        <Link href='#' className='font-semibold hover:underline'>
+          Untitled Post
+        </Link>
+        <p className='text-sm text-muted-foreground'>July 6, 2023</p>
+      </div>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant='outline' size='icon'>
+            <MoreVertical className='h-4 w-4' />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align='end'>
+          <DropdownMenuItem className='cursor-pointer'>
+            <span>Edit</span>
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
+          <DropdownMenuItem
+            className='cursor-pointer'
+            onSelect={() => setShowDeleteAlert(true)}
+          >
+            <span className='text-destructive'>Delete</span>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
 
-            <AlertDialog>
-              <AlertDialogTrigger>
-                <Button variant='destructive' size='icon'>
-                  <Trash2 className='h-4 w-4' />
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                  <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete
-                    your post and remove your data from our servers.
-                  </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction className='bg-destructive text-destructive-foreground'>
-                    Delete
-                  </AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-          </div>
-        </div>
-      </CardHeader>
-    </Card>
+      <AlertDialog open={showDeleteAlert} onOpenChange={setShowDeleteAlert}>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>
+              Are you sure you want to delete this post?
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction className='bg-destructive text-destructive-foreground hover:text-primary-foreground'>
+              Delete
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
+    </div>
   )
 }
