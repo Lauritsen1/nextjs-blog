@@ -1,0 +1,42 @@
+.ce-toolbar__plus {
+  color: white;
+  background-color: transparent;
+}
+
+.ce-toolbar__plus:hover {
+  background-color: transparent;
+}
+
+.ce-popover {
+  background-color: hsl(var(--background));
+  border: hsl(var(--border)) 1px solid;
+}
+
+.ce-popover-item:hover {
+  background-color: hsl(var(--accent)) !important;
+}
+
+.ce-popover-item__title {
+  color: hsl(var(--foreground));
+}
+
+.cdx-search-field {
+  background-color: hsl(var(--background)) !important;
+}
+
+.ce-block .ce-block--focused .ce-block--selected {
+  background-color: transparent;
+}
+
+.ce-toolbar__settings-btn:hover {
+  background-color: transparent;
+}
+
+.ce-toolbar__settings-btn {
+  color: hsl(var(--foreground));
+  background-color: transparent;
+}
+
+.ce-block--selected .ce-block__content {
+  background-color: transparent;
+}
