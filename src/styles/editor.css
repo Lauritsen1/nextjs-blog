@@ -1,5 +1,5 @@
 .ce-toolbar__plus {
-  color: white;
+  color: hsl(var(--foreground));
   background-color: transparent;
 }
 
