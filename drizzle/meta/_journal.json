@@ -43,6 +43,13 @@
       "when": 1689162427283,
       "tag": "0005_keen_oracle",
       "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "5",
+      "when": 1689285424012,
+      "tag": "0006_naive_amazoness",
+      "breakpoints": true
     }
   ]
 }

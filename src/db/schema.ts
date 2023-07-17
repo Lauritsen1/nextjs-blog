@@ -1,4 +1,4 @@
-import { mysqlTable, serial, text, varchar } from 'drizzle-orm/mysql-core'
+import { mysqlTable, serial, text, varchar, json } from 'drizzle-orm/mysql-core'
 
 export const users = mysqlTable('users', {
   id: varchar('id', { length: 255 }).primaryKey(),
@@ -9,5 +9,5 @@ export const users = mysqlTable('users', {
 export const posts = mysqlTable('posts', {
   id: serial('id').primaryKey(),
   title: text('title'),
-  content: text('content'),
+  content: json('content'),
 })
