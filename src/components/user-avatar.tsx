@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 
+import { useUser } from '@clerk/nextjs'
 import { useClerk } from '@clerk/clerk-react'
 
 import { User, LayoutDashboard, Settings, LogOut } from 'lucide-react'
@@ -15,14 +16,20 @@ import {
   DropdownMenuSeparator,
 } from '@/components/ui/dropdown-menu'
 
+import { generateInitials } from '@/lib/utils'
+
 export default function UserAvatar() {
+  const { user } = useUser()
   const { signOut } = useClerk()
+
+  const initials = generateInitials(user?.firstName, user?.lastName)
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Avatar>
-          <AvatarImage src='https://github.com/shadcn.png' />
-          <AvatarFallback>CN</AvatarFallback>
+          <AvatarImage src={user?.imageUrl} />
+          <AvatarFallback>{initials}</AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
       <DropdownMenuContent align='end'>
