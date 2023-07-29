@@ -1,22 +1,26 @@
 import { NextResponse } from 'next/server'
 
 import { db } from '@/db'
-import { posts } from '@/db/schema'
+import { posts, Post } from '@/db/schema'
 
-interface BodyData {
-  title: string | null
-  content: string | null
-}
+type NewPost = Pick<Post, 'title' | 'content' | 'authorId'>
 
 export async function POST(request: Request) {
-  const body = await request.json()
+  try {
+    const body = await request.json()
 
-  const { title, content } = body as BodyData
+    const { title, content, authorId } = body as NewPost
 
-  const newPost = await db.insert(posts).values({
-    title: title,
-    content: content,
-  })
+    const newPost = await db.insert(posts).values({
+      title: title,
+      content: content,
+      authorId: authorId,
+    })
 
-  return NextResponse.json(newPost)
+    return NextResponse.json(newPost)
+  } catch (error: any) {
+    return new Response(error.message, {
+      status: 400,
+    })
+  }
 }
