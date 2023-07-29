@@ -1,0 +1,1 @@
+ALTER TABLE `posts` ADD `author_id` varchar(255);

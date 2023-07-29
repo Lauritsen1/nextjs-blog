@@ -50,6 +50,27 @@
       "when": 1689285424012,
       "tag": "0006_naive_amazoness",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1690585364408,
+      "tag": "0007_white_emma_frost",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "5",
+      "when": 1690585621176,
+      "tag": "0008_shocking_barracuda",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "5",
+      "when": 1690585878769,
+      "tag": "0009_little_skullbuster",
+      "breakpoints": true
     }
   ]
 }
