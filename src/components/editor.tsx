@@ -2,6 +2,8 @@
 
 import { useState, useRef, useCallback, useEffect } from 'react'
 
+import { useUser } from '@clerk/nextjs'
+
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -9,6 +11,11 @@ import { useForm } from 'react-hook-form'
 
 import EditorJS from '@editorjs/editorjs'
 import TextareaAutosize from 'react-textarea-autosize'
+
+import { Button } from '@/components/ui/button'
+import { useToast } from '@/components/ui/use-toast'
+
+import { Loader2 } from 'lucide-react'
 
 import '@/styles/editor.css'
 
@@ -27,9 +34,12 @@ const formSchema = z.object({
 })
 
 export default function editor() {
+  const { user } = useUser()
   const ref = useRef<EditorJS>()
-  const [isSaving, setIsSaving] = useState<boolean>(false)
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isMounted, setIsMounted] = useState<boolean>(false)
+
+  const { toast } = useToast()
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -59,11 +69,9 @@ export default function editor() {
   }, [])
 
   const onSubmit = async (data: z.infer<typeof formSchema>) => {
-    setIsSaving(true)
+    setIsLoading(true)
 
     const blocks = await ref.current?.save()
-
-    console.log(data.title)
 
     const response = await fetch('/api/posts', {
       method: 'POST',
@@ -73,10 +81,23 @@ export default function editor() {
       body: JSON.stringify({
         title: data.title,
         content: blocks,
+        authorId: user?.id,
       }),
     })
 
-    setIsSaving(false)
+    if (!response.ok) {
+      toast({
+        title: 'Something went wrong.',
+        description: 'Your post was not created. Please try again.',
+        variant: 'destructive',
+      })
+    } else {
+      toast({
+        title: 'Post created!',
+      })
+    }
+
+    setIsLoading(false)
   }
 
   useEffect(() => {
@@ -109,7 +130,10 @@ export default function editor() {
         />
         <div id='editor'></div>
       </div>
-      <button>save</button>
+      <Button>
+        {isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
+        Save
+      </Button>
     </form>
   )
 }
