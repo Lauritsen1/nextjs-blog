@@ -1,8 +1,11 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+import Link from 'next/link'
+
 import { useState } from 'react'
 
-import Link from 'next/link'
+import dayjs from 'dayjs'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -14,7 +17,6 @@ import {
 } from '@/components/ui/dropdown-menu'
 import {
   AlertDialog,
-  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -23,17 +25,31 @@ import {
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog'
 
-import { MoreVertical } from 'lucide-react'
+import { MoreVertical, Loader2 } from 'lucide-react'
 
-export default function DashboardPostItem() {
+export default function DashboardPostItem({ post }: { post: any }) {
+  const router = useRouter()
   const [showDeleteAlert, setShowDeleteAlert] = useState<boolean>(false)
+  const date = dayjs(post.createdAt).format('MMM D, YYYY')
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
+  async function deletePost() {
+    setIsLoading(true)
+    const response = await fetch(`/api/posts/${post.id}`, {
+      method: 'DELETE',
+    })
+    setIsLoading(false)
+    setShowDeleteAlert(false)
+    router.refresh()
+  }
+
   return (
     <div className='flex items-center justify-between p-4 shadow-sm'>
       <div>
         <Link href='#' className='font-semibold hover:underline'>
-          Untitled Post
+          {post.title}
         </Link>
-        <p className='text-sm text-muted-foreground'>July 6, 2023</p>
+        <p className='text-sm text-muted-foreground'>{date}</p>
       </div>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -67,9 +83,14 @@ export default function DashboardPostItem() {
           </AlertDialogHeader>
           <AlertDialogFooter>
             <AlertDialogCancel>Cancel</AlertDialogCancel>
-            <AlertDialogAction className='bg-destructive text-destructive-foreground hover:text-primary-foreground'>
+            <Button
+              onClick={deletePost}
+              variant='destructive'
+              disabled={isLoading}
+            >
+              {isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
               Delete
-            </AlertDialogAction>
+            </Button>
           </AlertDialogFooter>
         </AlertDialogContent>
       </AlertDialog>
