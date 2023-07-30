@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { currentUser } from '@clerk/nextjs'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme-toggle'
 
@@ -6,7 +7,8 @@ import { Edit3 } from 'lucide-react'
 
 import UserAvatar from '@/components/user-avatar'
 
-export default function SiteHeader() {
+export default async function SiteHeader() {
+  const user = await currentUser()
   return (
     <header className='sticky top-0 z-40 w-full border-b bg-background/95 backdrop-blur'>
       <div className='container flex h-14 items-center justify-between'>
@@ -19,10 +21,19 @@ export default function SiteHeader() {
 
         <div className='flex space-x-4'>
           <ThemeToggle />
-          <Link className='h-full w-full' href='/new'>
-            <Button variant='outline'>Create Post</Button>
-          </Link>
-          <UserAvatar />
+          {!user ? (
+            <>
+              <Button variant='secondary'>Login</Button>
+              <Button>Register</Button>
+            </>
+          ) : (
+            <>
+              <Link className='h-full w-full' href='/new'>
+                <Button variant='outline'>Create Post</Button>
+              </Link>
+              <UserAvatar />
+            </>
+          )}
         </div>
       </div>
     </header>
