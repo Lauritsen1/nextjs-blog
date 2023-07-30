@@ -4,9 +4,9 @@ import { Inter } from 'next/font/google'
 
 const inter = Inter({ subsets: ['latin'] })
 
-import { ThemeProvider } from '@/components/theme-provider'
+import { Toaster } from '@/components/ui/toaster'
 
-import SiteHeader from '@/components/site-header'
+import { ThemeProvider } from '@/components/theme-provider'
 
 export const metadata = {
   title: 'Create Next App',
@@ -23,8 +23,8 @@ export default function RootLayout({
       <html lang='en' suppressHydrationWarning>
         <body className={inter.className}>
           <ThemeProvider attribute='class' defaultTheme='system' enableSystem>
-            <SiteHeader />
             {children}
+            <Toaster />
           </ThemeProvider>
         </body>
       </html>
