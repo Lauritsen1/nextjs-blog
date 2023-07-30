@@ -23,8 +23,12 @@ export default async function SiteHeader() {
           <ThemeToggle />
           {!user ? (
             <>
-              <Button variant='secondary'>Login</Button>
-              <Button>Register</Button>
+              <Link href='/login'>
+                <Button variant='secondary'>Login</Button>
+              </Link>
+              <Link href='/register'>
+                <Button>Register</Button>
+              </Link>
             </>
           ) : (
             <>
