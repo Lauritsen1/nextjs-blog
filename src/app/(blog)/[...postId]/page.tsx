@@ -1,8 +1,12 @@
+import { notFound } from 'next/navigation'
+
 import { db } from '@/db'
 import { posts } from '@/db/schema'
 import { eq } from 'drizzle-orm'
 
 import edjsHTML from 'editorjs-html'
+
+import { OutputData } from '@editorjs/editorjs'
 
 export default async function PostPage({
   params,
@@ -10,12 +14,17 @@ export default async function PostPage({
   params: { postId: string }
 }) {
   // TODO: Create type for post
-  const post: any = await db.query.posts.findFirst({
+  const post = await db.query.posts.findFirst({
     where: eq(posts.id, Number(params.postId[1])),
   })
 
+  if (!post) {
+    notFound()
+  }
+
   const edjsParser = edjsHTML()
-  const html: string[] = edjsParser.parse(post.content)
+  const postContent: OutputData | null = post?.content as OutputData | null
+  const html: string[] = postContent ? edjsParser.parse(postContent) : []
 
   return (
     <main className='prose prose-zinc dark:prose-invert'>
