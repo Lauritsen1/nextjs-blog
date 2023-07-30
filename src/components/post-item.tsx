@@ -1,3 +1,7 @@
+import Link from 'next/link'
+
+import dayjs from 'dayjs'
+
 import {
   Card,
   CardContent,
@@ -11,15 +15,24 @@ import { Button } from '@/components/ui/button'
 
 import { Dot } from 'lucide-react'
 
-export default function PostItem() {
+import { Post, User } from '@/db/schema'
+
+type PostWithUser = Post & {
+  author: User
+}
+
+export default function PostItem({ post }: { post: PostWithUser }) {
+  const date = dayjs(post.createdAt).format('MMM D, YYYY')
   return (
     <Card className='border-none'>
       <CardHeader>
-        <CardTitle>Lorem ipsum</CardTitle>
+        <CardTitle>
+          <Link href={`/${post.author.username}/${post.id}`}>{post.title}</Link>
+        </CardTitle>
         <CardDescription>
-          <span>Rasmus Lauritsen</span>
+          <span>{post.author.username}</span>
           <Dot className='inline-block' />
-          <span>2 days ago</span>
+          <span>{date}</span>
         </CardDescription>
       </CardHeader>
       <CardContent>
@@ -30,7 +43,9 @@ export default function PostItem() {
       </CardContent>
       <CardFooter className='flex justify-between'>
         <Badge className='cursor-pointer'>News</Badge>
-        <Button variant='link'>Read More</Button>
+        <Link href={`/${post.author.username}/${post.id}`}>
+          <Button variant='link'>Read More</Button>
+        </Link>
       </CardFooter>
     </Card>
   )
