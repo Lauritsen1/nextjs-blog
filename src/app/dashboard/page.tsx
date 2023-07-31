@@ -38,7 +38,7 @@ export default async function Dashboard() {
       </div>
       <div className='divide-y divide-border rounded-md border'>
         {allPosts.map((post: any) => {
-          return <DashboardPostItem post={post} />
+          return <DashboardPostItem key={post.id} post={post} />
         })}
       </div>
     </div>
