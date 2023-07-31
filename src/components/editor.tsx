@@ -33,7 +33,7 @@ const formSchema = z.object({
   content: z.any().optional(),
 })
 
-export default function editor() {
+export default function Editor() {
   const { user } = useUser()
   const ref = useRef<EditorJS>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
