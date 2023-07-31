@@ -29,8 +29,8 @@ import { MoreVertical, Loader2 } from 'lucide-react'
 
 export default function DashboardPostItem({ post }: { post: any }) {
   const router = useRouter()
-  const [showDeleteAlert, setShowDeleteAlert] = useState<boolean>(false)
   const date = dayjs(post.createdAt).format('MMM D, YYYY')
+  const [showDeleteAlert, setShowDeleteAlert] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
   async function deletePost() {
