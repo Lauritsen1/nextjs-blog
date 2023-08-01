@@ -1,3 +1,5 @@
+import { redirect } from 'next/navigation'
+
 import { db } from '@/db'
 
 import { currentUser } from '@clerk/nextjs'
@@ -11,8 +13,12 @@ import { posts } from '@/db/schema'
 export default async function Dashboard() {
   const user = await currentUser()
 
+  if (!user) {
+    redirect('/login')
+  }
+
   const allPosts = await db.query.posts.findMany({
-    where: eq(posts.authorId, user!.id),
+    where: eq(posts.authorId, user.id),
   })
 
   return (
