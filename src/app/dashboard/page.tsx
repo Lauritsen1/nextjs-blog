@@ -1,14 +1,9 @@
-import Link from 'next/link'
-
 import { db } from '@/db'
 
 import { currentUser } from '@clerk/nextjs'
 
-import { Button } from '@/components/ui/button'
-
+import PostCreateButton from '@/components/post-create-button'
 import DashboardPostItem from '@/components/dashboard-post-item'
-
-import { Plus } from 'lucide-react'
 
 import { eq } from 'drizzle-orm'
 import { posts } from '@/db/schema'
@@ -29,12 +24,7 @@ export default async function Dashboard() {
             Create and manage posts.
           </p>
         </div>
-        <Link href='/new'>
-          <Button>
-            <Plus className='mr-2 h-4 w-4' />
-            Create Post
-          </Button>
-        </Link>
+        <PostCreateButton icon={true} />
       </div>
       <div className='divide-y divide-border rounded-md border'>
         {allPosts.map((post: any) => {
