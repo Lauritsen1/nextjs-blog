@@ -15,7 +15,7 @@ export default async function PostPage({
 }) {
   // TODO: Create type for post
   const post = await db.query.posts.findFirst({
-    where: eq(posts.id, Number(params.postId[1])),
+    where: eq(posts.id, Number(params.postId)),
   })
 
   if (!post) {
