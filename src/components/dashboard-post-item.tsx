@@ -46,7 +46,7 @@ export default function DashboardPostItem({ post }: { post: any }) {
   return (
     <div className='flex items-center justify-between p-4 shadow-sm'>
       <div>
-        <Link href='#' className='font-semibold hover:underline'>
+        <Link href={`/${post.id}`} className='font-semibold hover:underline'>
           {post.title}
         </Link>
         <p className='text-sm text-muted-foreground'>{date}</p>
@@ -58,9 +58,9 @@ export default function DashboardPostItem({ post }: { post: any }) {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent align='end'>
-          <DropdownMenuItem className='cursor-pointer'>
-            <span>Edit</span>
-          </DropdownMenuItem>
+          <Link href={`/editor/${post.id}`}>
+            <DropdownMenuItem className='cursor-pointer'>Edit</DropdownMenuItem>
+          </Link>
           <DropdownMenuSeparator />
           <DropdownMenuItem
             className='cursor-pointer'

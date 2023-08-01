@@ -27,7 +27,7 @@ export default function PostItem({ post }: { post: PostWithUser }) {
     <Card className='border-none'>
       <CardHeader>
         <CardTitle>
-          <Link href={`/${post.author.username}/${post.id}`}>{post.title}</Link>
+          <Link href={`/${post.id}`}>{post.title}</Link>
         </CardTitle>
         <CardDescription>
           <span>{post.author.username}</span>
@@ -43,7 +43,7 @@ export default function PostItem({ post }: { post: PostWithUser }) {
       </CardContent>
       <CardFooter className='flex justify-between'>
         <Badge className='cursor-pointer'>News</Badge>
-        <Link href={`/${post.author.username}/${post.id}`}>
+        <Link href={`/${post.id}`}>
           <Button variant='link'>Read More</Button>
         </Link>
       </CardFooter>
