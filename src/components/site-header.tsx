@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { currentUser } from '@clerk/nextjs'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from '@/components/theme-toggle'
+import PostCreateButton from '@/components/post-create-button'
 
 import { Edit3 } from 'lucide-react'
 
@@ -32,9 +33,11 @@ export default async function SiteHeader() {
             </>
           ) : (
             <>
-              <Link className='h-full w-full' href='/new'>
-                <Button variant='outline'>Create Post</Button>
-              </Link>
+              <PostCreateButton
+                className='text-primary'
+                variant='outline'
+                icon={false}
+              />
               <UserAvatar />
             </>
           )}
