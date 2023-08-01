@@ -2,8 +2,6 @@
 
 import { useState, useRef, useCallback, useEffect } from 'react'
 
-import { useUser } from '@clerk/nextjs'
-
 import * as z from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
 
@@ -33,8 +31,7 @@ const formSchema = z.object({
   content: z.any().optional(),
 })
 
-export default function Editor() {
-  const { user } = useUser()
+export default function Editor({ post }: { post: any }) {
   const ref = useRef<EditorJS>()
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [isMounted, setIsMounted] = useState<boolean>(false)
@@ -60,6 +57,7 @@ export default function Editor() {
         },
         placeholder: 'Type here to write your post...',
         inlineToolbar: true,
+        data: post.content,
         tools: {
           header: Header,
           list: List,
@@ -73,15 +71,14 @@ export default function Editor() {
 
     const blocks = await ref.current?.save()
 
-    const response = await fetch('/api/posts', {
-      method: 'POST',
+    const response = await fetch(`/api/posts/${post.id}`, {
+      method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         title: data.title,
         content: blocks,
-        authorId: user?.id,
       }),
     })
 
@@ -124,7 +121,7 @@ export default function Editor() {
           {...form.register('title')}
           id='title'
           className='w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-bold focus:outline-none'
-          defaultValue='Untitled Post'
+          defaultValue={post.title}
           placeholder='Post title'
           autoFocus
         />
