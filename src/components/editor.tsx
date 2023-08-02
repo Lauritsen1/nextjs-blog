@@ -48,6 +48,16 @@ export default function Editor({ post }: { post: any }) {
     const Header = (await import('@editorjs/header')).default
     // @ts-ignore
     const List = (await import('@editorjs/list')).default
+    // @ts-ignore
+    const Embed = (await import('@editorjs/embed')).default
+    // @ts-ignore
+    const Table = (await import('@editorjs/table')).default
+    // @ts-ignore
+    const Code = (await import('@editorjs/code')).default
+    // @ts-ignore
+    const LinkTool = (await import('@editorjs/link')).default
+    // @ts-ignore
+    const InlineCode = (await import('@editorjs/inline-code')).default
 
     if (!ref.current) {
       const editor = new EditorJS({
@@ -60,7 +70,12 @@ export default function Editor({ post }: { post: any }) {
         data: post.content,
         tools: {
           header: Header,
+          linkTool: LinkTool,
           list: List,
+          code: Code,
+          inlineCode: InlineCode,
+          table: Table,
+          embed: Embed,
         },
       })
     }
