@@ -135,7 +135,7 @@ export default function Editor({ post }: { post: any }) {
         <TextareaAutosize
           {...form.register('title')}
           id='title'
-          className='w-full resize-none appearance-none overflow-hidden bg-transparent text-5xl font-bold focus:outline-none'
+          className='w-full resize-none appearance-none overflow-hidden bg-transparent text-4xl font-bold focus:outline-none lg:text-5xl'
           defaultValue={post.title}
           placeholder='Post title'
           autoFocus

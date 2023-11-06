@@ -28,7 +28,7 @@ export default async function PostPage({
 
   return (
     <main className='prose prose-zinc dark:prose-invert'>
-      {post && <h1 className='text-5xl font-bold'>{post.title}</h1>}
+      {post && <h1 className='text-4xl font-bold lg:text-5xl'>{post.title}</h1>}
       {html.map((item, i) => {
         return <div key={i} dangerouslySetInnerHTML={{ __html: item }}></div>
       })}
