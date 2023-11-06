@@ -5,6 +5,7 @@ import {
   varchar,
   json,
   timestamp,
+  boolean,
 } from 'drizzle-orm/mysql-core'
 import { type InferModel, relations } from 'drizzle-orm'
 
@@ -26,6 +27,7 @@ export const posts = mysqlTable('posts', {
   title: text('title'),
   content: json('content'),
   authorId: varchar('author_id', { length: 255 }),
+  published: boolean('published').default(false),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
 })
