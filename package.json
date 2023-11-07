@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@clerk/nextjs": "^4.21.13",
+    "@clerk/nextjs": "^4.26.2",
     "@editorjs/code": "^2.8.0",
     "@editorjs/editorjs": "^2.27.2",
     "@editorjs/embed": "^2.5.3",
@@ -40,14 +40,14 @@
     "class-variance-authority": "^0.6.1",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.9",
-    "drizzle-orm": "^0.27.0",
+    "drizzle-orm": "^0.28.6",
     "editorjs-html": "^3.4.3",
     "eslint": "8.43.0",
     "eslint-config-next": "^14.0.1",
     "lucide-react": "^0.256.0",
     "next": "^14.0.1",
     "next-themes": "^0.2.1",
-    "postcss": "8.4.24",
+    "postcss": "^8.4.31",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.45.1",
@@ -61,7 +61,7 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.9",
     "dotenv": "^16.3.1",
-    "drizzle-kit": "^0.19.3",
+    "drizzle-kit": "^0.19.13",
     "prettier": "^2.8.8",
     "prettier-plugin-tailwindcss": "^0.3.0"
   }
