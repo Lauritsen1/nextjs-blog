@@ -15,9 +15,5 @@ export default async function Page({ params }: { params: { postId: string } }) {
     redirect('/dashboard')
   }
 
-  return (
-    <>
-      <Editor post={post} />
-    </>
-  )
+  return <Editor post={post} />
 }
