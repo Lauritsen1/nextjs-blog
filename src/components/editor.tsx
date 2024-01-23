@@ -142,10 +142,16 @@ export default function Editor({ post }: { post: any }) {
         />
         <div id='editor'></div>
       </div>
-      <Button>
-        {isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
-        Save
-      </Button>
+      <div className='space-x-4'>
+        <Button>
+          {isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
+          Publish
+        </Button>
+        <Button variant='ghost'>
+          {isLoading && <Loader2 className='mr-2 h-4 w-4 animate-spin' />}
+          Save draft
+        </Button>
+      </div>
     </form>
   )
 }
